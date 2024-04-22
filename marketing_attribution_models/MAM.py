@@ -9,7 +9,20 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 
-plt.style.use("seaborn-white")
+try_styles = ['seaborn-white', 'seaborn-v0_8-white', 'default']
+
+style_applied = False
+
+for style in try_styles:
+    try:
+        plt.style.use(style)
+        style_applied = True
+        break
+    except Exception as e:
+        pass
+
+if not style_applied:
+    raise Exception("All style attempts failed. No valid styles in the array.")
 
 
 class MAM:

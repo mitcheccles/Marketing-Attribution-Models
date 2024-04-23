@@ -1301,7 +1301,7 @@ class MAM:
             return matrix
 
         temp = self.channels.apply(
-            lambda x: ["(inicio)"] + x
+            lambda x: ["(start)"] + x
         ) + self.journey_with_conv.apply(lambda x: ["(conversion)" if x else "(null)"])
 
         orig = []
@@ -1341,9 +1341,9 @@ class MAM:
 
         # Converting channels_names to index and pass a numpy array foward
         channels_names = (
-            ["(inicio)"]
+            ["(start)"]
             + list(
-                (set(temp.orig) - set(["(inicio)"]))
+                (set(temp.orig) - set(["(start)"]))
                 | (set(temp.dest) - set(["(conversion)", "(null)"]))
             )
             + ["(null)", "(conversion)"]
